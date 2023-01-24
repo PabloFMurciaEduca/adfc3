@@ -14,13 +14,13 @@
 			},
 			{
 				"name": "EstableceEdad",
-				"description": "46",
+				"description": "",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "SetEdad",
-					"value": ""
+					"value": "46"
 				}
 			},
 			{
