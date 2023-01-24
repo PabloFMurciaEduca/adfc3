@@ -1,0 +1,20 @@
+{
+	"name": "param_variables",
+	"properties": {
+		"parameters": {
+			"nombre": {
+				"type": "string"
+			},
+			"edad": {
+				"type": "int"
+			},
+			"cuenta": {
+				"type": "float"
+			},
+			"activo": {
+				"type": "bool"
+			}
+		},
+		"annotations": []
+	}
+}
