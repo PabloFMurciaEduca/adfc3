@@ -9,11 +9,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "SetNombre",
-					"value": ""
+					"value": "Pablo"
 				}
 			},
 			{
 				"name": "EstableceEdad",
+				"description": "46",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
@@ -29,7 +30,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "SetCuenta",
-					"value": ""
+					"value": "pablo.fernandez@gmail.com"
 				}
 			},
 			{
@@ -39,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "SetActivo",
-					"value": ""
+					"value": "si"
 				}
 			}
 		],
