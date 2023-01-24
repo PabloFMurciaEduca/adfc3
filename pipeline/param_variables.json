@@ -1,18 +1,40 @@
 {
 	"name": "param_variables",
 	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
+			}
+		],
 		"parameters": {
-			"nombre": {
+			"Nombre": {
 				"type": "string"
 			},
-			"edad": {
+			"Edad": {
 				"type": "int"
 			},
-			"cuenta": {
+			"Cuenta": {
 				"type": "float"
 			},
-			"activo": {
+			"Activo": {
 				"type": "bool"
+			}
+		},
+		"variables": {
+			"SetNombre": {
+				"type": "String"
+			},
+			"SetEdad": {
+				"type": "String"
+			},
+			"SetCuenta": {
+				"type": "String"
+			},
+			"SetActivo": {
+				"type": "Boolean"
 			}
 		},
 		"annotations": []
