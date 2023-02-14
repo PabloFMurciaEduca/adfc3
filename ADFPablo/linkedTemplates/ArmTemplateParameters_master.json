@@ -5,6 +5,12 @@
 		"factoryName": {
 			"value": "ADFPablo"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"Pablodb4free_connectionString": {
+			"value": ""
+		},
 		"containerUri": {
 			"value": ""
 		},
