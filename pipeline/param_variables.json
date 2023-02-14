@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "EstableceNombre",
+				"name": "SetNombre",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
@@ -13,7 +13,7 @@
 				}
 			},
 			{
-				"name": "EstableceEdad",
+				"name": "SetEdad",
 				"description": "",
 				"type": "SetVariable",
 				"dependsOn": [],
@@ -24,7 +24,7 @@
 				}
 			},
 			{
-				"name": "EstableceCuenta",
+				"name": "SetCuenta",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
@@ -34,7 +34,7 @@
 				}
 			},
 			{
-				"name": "EstableceActivo",
+				"name": "SetActivo",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
