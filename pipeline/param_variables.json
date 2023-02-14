@@ -40,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "SetActivo",
-					"value": "si"
+					"value": true
 				}
 			}
 		],
