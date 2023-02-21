@@ -166,14 +166,13 @@
 						]
 					}
 				],
-				"userProperties": [],
 				"typeProperties": {
 					"items": {
 						"value": "@activity('GetFileList').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@equals(item().type, 'File')",
+						"value": "@equals(item().Name, formatDateTime(utcnow(),'yyyymmdd'))\n",
 						"type": "Expression"
 					}
 				}
@@ -181,7 +180,14 @@
 			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "FilterFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -195,6 +201,7 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
+						"itemType",
 						"itemName"
 					],
 					"storeSettings": {
@@ -204,6 +211,30 @@
 					},
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "FilterFiles_copy1",
+				"description": "Only files will be selected, the source-folders will not be selected.",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetFileList').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().Name, formatDateTime(utcnow(),'yyyymmdd'))",
+						"type": "Expression"
 					}
 				}
 			}
