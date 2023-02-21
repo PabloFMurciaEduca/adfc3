@@ -160,7 +160,13 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "input",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Subcarpeta": {
+											"value": "@pipeline().parameters.FechaAComprobar",
+											"type": "Expression"
+										}
+									}
 								},
 								"enableLogging": false,
 								"storeSettings": {
