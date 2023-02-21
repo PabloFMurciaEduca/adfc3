@@ -22,7 +22,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Subcarpeta": {
-								"value": "@formatDateTime(utcnow(),'yyyyMMdd')",
+								"value": "@pipeline().parameters.FechaAComprobar",
 								"type": "Expression"
 							}
 						}
@@ -115,13 +115,25 @@
 							"inputs": [
 								{
 									"referenceName": "input",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Subcarpeta": {
+											"value": "@pipeline().parameters.FechaAComprobar",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "Output",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Subcarpeta": {
+											"value": "@pipeline().parameters.FechaAComprobar",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						},
@@ -178,12 +190,17 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@equals(item().Name, formatDateTime(utcnow(),'yyyyMMdd'))\n",
+						"value": "@equals(item().Name, pipeline().parameters.FechaAComprobar)",
 						"type": "Expression"
 					}
 				}
 			}
 		],
+		"parameters": {
+			"FechaAComprobar": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
