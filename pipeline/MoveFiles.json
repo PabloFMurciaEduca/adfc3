@@ -68,63 +68,49 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "BinarySource",
+									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true
+										"recursive": true,
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "BinaryReadSettings"
+										"type": "DelimitedTextReadSettings"
 									},
 									"recursive": false
 								},
 								"sink": {
-									"type": "BinarySink",
+									"type": "DelimitedTextSink",
 									"storeSettings": {
 										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
 									}
 								},
 								"enableStaging": false,
-								"dataIntegrationUnits": 0
+								"dataIntegrationUnits": 0,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
 							},
 							"inputs": [
 								{
-									"referenceName": "BinaryDataSource_File",
-									"type": "DatasetReference",
-									"parameters": {
-										"Container": {
-											"value": "@pipeline().parameters.SourceStore_Location",
-											"type": "Expression"
-										},
-										"Directory": {
-											"value": "@pipeline().parameters.SourceStore_Directory",
-											"type": "Expression"
-										},
-										"filename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "input",
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "BinaryDataDestination",
-									"type": "DatasetReference",
-									"parameters": {
-										"Container": {
-											"value": "@pipeline().parameters.DestinationStore_Location",
-											"type": "Expression"
-										},
-										"Directory": {
-											"value": "@pipeline().parameters.DestinationStore_Directory",
-											"type": "Expression"
-										},
-										"filename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "Output",
+									"type": "DatasetReference"
 								}
 							]
 						},
@@ -202,20 +188,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"SourceStore_Location": {
-				"type": "String"
-			},
-			"SourceStore_Directory": {
-				"type": "String"
-			},
-			"DestinationStore_Location": {
-				"type": "String"
-			},
-			"DestinationStore_Directory": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
