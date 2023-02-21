@@ -19,7 +19,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": {
+								"value": "@formatDateTime(utcnow(),'yyyyMMdd')",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"itemName"
