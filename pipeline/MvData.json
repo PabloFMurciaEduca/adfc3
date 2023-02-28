@@ -58,7 +58,10 @@
 				"inputs": [
 					{
 						"referenceName": "input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": "TestCopy"
+						}
 					}
 				],
 				"outputs": [
@@ -86,9 +89,14 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": "TestCopy"
+						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"itemName"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
