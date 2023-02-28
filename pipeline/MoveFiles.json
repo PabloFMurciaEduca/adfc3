@@ -22,13 +22,13 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Subcarpeta": {
-								"value": "@pipeline().parameters.FechaAComprobar",
+								"value": "@formatDateTime(utcnow(),'yyyymmdd')",
 								"type": "Expression"
 							}
 						}
 					},
 					"fieldList": [
-						"itemName"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -190,9 +190,10 @@
 						]
 					}
 				],
+				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('GetFileList').output.childItems",
+						"value": "@activity('GetFileList').output.itemName",
 						"type": "Expression"
 					},
 					"condition": {
@@ -202,11 +203,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"FechaAComprobar": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
