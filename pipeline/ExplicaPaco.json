@@ -1,0 +1,34 @@
+{
+	"name": "ExplicaPaco",
+	"properties": {
+		"activities": [
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [],
+				"userProperties": [
+					{
+						"name": "Fecha",
+						"value": "2023"
+					}
+				],
+				"typeProperties": {
+					"variableName": "asd",
+					"value": {
+						"value": "@formatDateTime(utcnow(),'yyyymmdd')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"Fecha": {
+				"type": "String"
+			},
+			"asd": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
