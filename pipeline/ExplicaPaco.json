@@ -21,6 +21,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"FechaAEvaluar": {
+				"type": "string",
+				"defaultValue": "@formatDateTime(utcnow(),'yyyymmdd')"
+			}
+		},
 		"variables": {
 			"Fecha": {
 				"type": "String"
