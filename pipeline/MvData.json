@@ -64,7 +64,10 @@
 				"outputs": [
 					{
 						"referenceName": "Output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": "TestCopy"
+						}
 					}
 				]
 			},
