@@ -1,5 +1,5 @@
 {
-	"name": "ExplicaPaco",
+	"name": "pipeline1",
 	"properties": {
 		"activities": [
 			{
@@ -19,7 +19,7 @@
 						"referenceName": "input",
 						"type": "DatasetReference",
 						"parameters": {
-							"Subcarpeta": "Data"
+							"Subcarpeta": "/"
 						}
 					},
 					"fieldList": [
@@ -35,6 +35,11 @@
 				}
 			}
 		],
+		"variables": {
+			"asd": {
+				"type": "Array"
+			}
+		},
 		"annotations": []
 	}
 }
