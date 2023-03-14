@@ -49,7 +49,8 @@
 				"type": "string"
 			},
 			"Edad": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": "sd"
 			},
 			"Cuenta": {
 				"type": "float",
