@@ -46,7 +46,8 @@
 		],
 		"parameters": {
 			"Nombre": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "4"
 			},
 			"Edad": {
 				"type": "int"
