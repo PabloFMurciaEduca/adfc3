@@ -1,6 +1,7 @@
 {
-	"name": "pipeline2",
+	"name": "MoveFlag",
 	"properties": {
+		"description": "2023/03/14",
 		"activities": [
 			{
 				"name": "BuscaFlag",
@@ -27,7 +28,7 @@
 						}
 					},
 					"fieldList": [
-						"childItems"
+						"itemName"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
