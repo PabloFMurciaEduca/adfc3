@@ -4,7 +4,7 @@
 		"description": "Move files from one folder to another folder",
 		"activities": [
 			{
-				"name": "GetFileList",
+				"name": "BuscaFlag",
 				"description": "Get the list of file",
 				"type": "GetMetadata",
 				"dependsOn": [],
@@ -22,7 +22,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Subcarpeta": {
-								"value": "@formatDateTime(utcnow(),'yyyymmdd')",
+								"value": "@concat(formatDateTime(utcnow(),'yyyymmdd'),'.flg')",
 								"type": "Expression"
 							}
 						}
@@ -184,7 +184,7 @@
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "GetFileList",
+						"activity": "BuscaFlag",
 						"dependencyConditions": [
 							"Succeeded"
 						]

@@ -45,9 +45,6 @@
 			}
 		],
 		"parameters": {
-			"Nombre": {
-
-			},
 			"Activo": {
 				"type": "bool"
 			}
@@ -66,5 +63,6 @@
 				"type": "Boolean"
 			}
 		},
-
+		"annotations": []
+	}
 }
