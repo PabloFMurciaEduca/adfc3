@@ -46,14 +46,7 @@
 		],
 		"parameters": {
 			"Nombre": {
-				"type": "string",
-				"defaultValue": "4"
-			},
-			"Edad": {
-				"type": "int"
-			},
-			"Cuenta": {
-				"type": "float"
+
 			},
 			"Activo": {
 				"type": "bool"
@@ -73,6 +66,5 @@
 				"type": "Boolean"
 			}
 		},
-		"annotations": []
-	}
+
 }

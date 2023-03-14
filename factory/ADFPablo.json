@@ -1,0 +1,9 @@
+{
+	"name": "ADFPablo",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4d684876-4e11-4620-bea7-3966f30674d8",
+		"tenantId": "216c2c0c-506f-4a94-b746-1bd05db6fa0f"
+	}
+}
