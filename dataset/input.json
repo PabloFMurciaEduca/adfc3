@@ -15,10 +15,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": {
-					"value": "@dataset().Subcarpeta",
-					"type": "Expression"
-				},
 				"container": "input"
 			},
 			"columnDelimiter": ";",
