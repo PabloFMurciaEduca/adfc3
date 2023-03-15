@@ -26,7 +26,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"fileListPath": "input",
+							"fileListPath": "input/Data",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -69,7 +69,7 @@
 						"referenceName": "Output",
 						"type": "DatasetReference",
 						"parameters": {
-							"Subcarpeta": "2Data"
+							"Subcarpeta": "Data"
 						}
 					}
 				]
