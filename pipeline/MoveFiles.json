@@ -193,11 +193,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('GetFileList').output.itemName",
+						"value": "@activity('BuscaFlag').output.itemName",
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@activity('GetFileList').output",
+						"value": "@activity('BuscaFlag').output",
 						"type": "Expression"
 					}
 				}
