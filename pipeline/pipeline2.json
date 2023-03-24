@@ -21,10 +21,6 @@
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"modifiedDatetimeStart": "2023-03-24T00:00:00.000Z",
-							"wildcardFolderPath": {
-								"value": "@concat('input/',formatDateTime(utcNow(), 'yyyyMMdd'))",
-								"type": "Expression"
-							},
 							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
@@ -56,13 +52,19 @@
 				"inputs": [
 					{
 						"referenceName": "input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": "@concat('input/',formatDateTime(utcNow(), 'yyyyMMdd'))"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "Output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": "@concat('input/',formatDateTime(utcNow(), 'yyyyMMdd'))"
+						}
 					}
 				]
 			},
@@ -88,13 +90,17 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Subcarpeta": "@concat('input/',formatDateTime(utcNow(), 'yyyyMMdd'))"
+						}
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
 							"referenceName": "AzureBlobStorage1",
 							"type": "LinkedServiceReference"
-						}
+						},
+						"path": ""
 					},
 					"enableLogging": true,
 					"storeSettings": {
