@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "CopiarArchivos",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -72,11 +72,11 @@
 				]
 			},
 			{
-				"name": "Delete1",
+				"name": "EliminarArchivos",
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "CopiarArchivos",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -109,7 +109,7 @@
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
-						"enablePartitionDiscovery": false
+						"enablePartitionDiscovery": true
 					}
 				}
 			}
