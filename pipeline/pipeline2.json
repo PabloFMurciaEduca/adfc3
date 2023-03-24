@@ -63,7 +63,10 @@
 						"referenceName": "Output",
 						"type": "DatasetReference",
 						"parameters": {
-							"Subcarpeta": "@concat('input/',formatDateTime(utcNow(), 'yyyyMMdd'))"
+							"Subcarpeta": {
+								"value": "@concat('Output/',formatDateTime(utcNow(), 'yyyyMMdd'))",
+								"type": "Expression"
+							}
 						}
 					}
 				]
