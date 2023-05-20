@@ -100,6 +100,13 @@
 					"dataIntegrationUnits": 0,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"sink": {
+									"ordinal": 1
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -115,14 +122,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Output",
-						"type": "DatasetReference",
-						"parameters": {
-							"Subcarpeta": {
-								"value": "@formatDateTime(utcnow(),'yyymmdd')",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "staging",
+						"type": "DatasetReference"
 					}
 				]
 			},
