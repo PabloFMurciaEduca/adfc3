@@ -77,10 +77,6 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "@formatDateTime(utcnow(),'yyyyMMdd')",
-								"type": "Expression"
-							},
 							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
@@ -113,14 +109,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "input",
-						"type": "DatasetReference",
-						"parameters": {
-							"Subcarpeta": {
-								"value": "@formatDateTime(utcnow(),'yyymmdd')",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "imdb",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
