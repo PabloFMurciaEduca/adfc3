@@ -32,32 +32,12 @@
 				}
 			},
 			{
-				"name": "Filtracsv",
-				"description": "Only files will be selected, the source-folders will not be selected.",
-				"type": "Filter",
-				"dependsOn": [
-					{
-						"activity": "BuscaFicheros",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"condition": {
-						"value": "@item()",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "CopiarFicheros",
 				"description": "Copy a file from the source store to the destination store.",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Filtracsv",
+						"activity": "BuscaFicheros",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -70,59 +50,54 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "imdb//"
+					},
+					{
+						"name": "Destination",
+						"value": "staging//"
+					}
+				],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFileName": "*",
-							"enablePartitionDiscovery": false
+							"wildcardFolderPath": "imdb",
+							"wildcardFileName": "*"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "BinaryReadSettings"
 						},
 						"recursive": false
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
-					"dataIntegrationUnits": 0,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"sink": {
-									"ordinal": 1
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"parallelCopies": 1,
+					"dataIntegrationUnits": 0
 				},
 				"inputs": [
 					{
-						"referenceName": "imdb",
-						"type": "DatasetReference"
+						"referenceName": "BinaryDataDestination1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": "imdb",
+							"Directory": "imdb",
+							"filename": "*.*"
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "staging",
+						"referenceName": "BinaryDataDestination1",
 						"type": "DatasetReference"
 					}
 				]
