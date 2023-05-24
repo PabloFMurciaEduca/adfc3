@@ -1,0 +1,159 @@
+{
+	"name": "Pipeline_imdb",
+	"properties": {
+		"activities": [
+			{
+				"name": "BuscaFicheros",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "imdb",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"itemName"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "CopiarFicheros",
+				"description": "Copy a file from the source store to the destination store.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "BuscaFicheros",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "imdb//"
+					},
+					{
+						"name": "Destination",
+						"value": "staging//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "imdb",
+							"wildcardFileName": "*"
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						},
+						"recursive": false
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"parallelCopies": 1,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "BinaryDataDestination1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": "imdb",
+							"Directory": "imdb",
+							"filename": "*.*"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "BinaryDataDestination1",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "staging",
+								"type": "Expression"
+							},
+							"Directory": {
+								"value": "@split(activity('BuscaFicheros').output.itemName,'.')[0]",
+								"type": "Expression"
+							},
+							"filename": "@activity('BuscaFicheros').output"
+						}
+					}
+				]
+			},
+			{
+				"name": "DeleteAFile",
+				"description": "Delete a file from the source store",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "CopiarFicheros",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "imdb",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"path": "imdb"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}

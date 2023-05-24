@@ -45,17 +45,6 @@
 			}
 		],
 		"parameters": {
-			"Nombre": {
-				"type": "string"
-			},
-			"Edad": {
-				"type": "int",
-				"defaultValue": "sd"
-			},
-			"Cuenta": {
-				"type": "float",
-				"defaultValue": 34
-			},
 			"Activo": {
 				"type": "bool"
 			}
@@ -74,8 +63,6 @@
 				"type": "Boolean"
 			}
 		},
-		"annotations": [],
-		"lastPublishTime": "2023-03-09T17:58:34Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
