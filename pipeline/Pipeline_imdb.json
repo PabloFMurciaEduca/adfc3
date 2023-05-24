@@ -106,9 +106,10 @@
 								"type": "Expression"
 							},
 							"Directory": {
-								"value": "@activity('BuscaFicheros').output",
+								"value": "@split(activity('BuscaFicheros').output.itemName,'.')[0]",
 								"type": "Expression"
-							}
+							},
+							"filename": "@activity('BuscaFicheros').output"
 						}
 					}
 				]
