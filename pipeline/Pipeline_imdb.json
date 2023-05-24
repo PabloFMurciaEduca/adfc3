@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -98,7 +99,17 @@
 				"outputs": [
 					{
 						"referenceName": "BinaryDataDestination1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "staging",
+								"type": "Expression"
+							},
+							"Directory": {
+								"value": "@activity('BuscaFicheros').output",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
